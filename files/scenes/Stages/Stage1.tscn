@@ -1,0 +1,314 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://files/scenes/crate/Crate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://files/actors/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://files/tilesets/grass.tres" type="TileSet" id=3]
+[ext_resource path="res://files/scenes/coins/Coin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://files/assets/kenney_scribbleplatformer/PNG/Default/background_cloudB.png" type="Texture" id=5]
+[ext_resource path="res://files/scenes/heart/Heart.tscn" type="PackedScene" id=6]
+[ext_resource path="res://files/assets/kenney_scribbleplatformer/PNG/Default/background_cloudA.png" type="Texture" id=7]
+[ext_resource path="res://files/assets/kenney_scribbleplatformer/PNG/Default/background_tree.png" type="Texture" id=8]
+[ext_resource path="res://files/assets/kenney_scribbleplatformer/PNG/Default/tile_bush.png" type="Texture" id=9]
+[ext_resource path="res://files/assets/kenney_scribbleplatformer/PNG/Default/tile_arrowRight.png" type="Texture" id=10]
+[ext_resource path="res://files/actors/player/Coins.gd" type="Script" id=11]
+[ext_resource path="res://files/Fonts/Concert_One/ConcertOne-Regular.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="Animation" id=1]
+resource_name = "bouncey"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("coin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.353553, 1.56917, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_out"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "bouncey"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("coin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.353553, 1.56917, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_out"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 75
+font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "fade_in"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="Stage1" type="Node2D"]
+scale = Vector2( 1.5, 1.5 )
+
+[node name="coin" parent="." instance=ExtResource( 4 )]
+
+[node name="coin2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 707.107, 369.11 )
+
+[node name="coin3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1127.13, 541.644 )
+
+[node name="coin4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1370.37, 120.208 )
+
+[node name="coin5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1820.09, 298.399 )
+
+[node name="coin6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2238.7, 125.865 )
+
+[node name="coin7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1107.33, 1310.98 )
+
+[node name="coin8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1169.56, 1310.98 )
+
+[node name="coin9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1228.95, 1313.8 )
+
+[node name="coin10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1305.32, 1316.63 )
+
+[node name="coin11" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1356.23, 1319.46 )
+
+[node name="coin12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1404.32, 1316.63 )
+
+[node name="coin13" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1477.85, 1322.29 )
+
+[node name="coin14" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1540.08, 1322.29 )
+
+[node name="coin15" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2555.49, 434.164 )
+
+[node name="coin16" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3149.46, 205.061 )
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 262, 375 )
+mass = 5.0
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 60, 59 )
+format = 1
+tile_data = PoolIntArray( 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196643, 1, 0, 196644, 1, 0, 196645, 1, 0, 196646, 1, 0, 196647, 1, 0, 262192, 1, 0, 262193, 1, 0, 262194, 1, 0, 262195, 1, 0, 262196, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393244, 1, 0, 393245, 1, 0, 393246, 1, 0, 393247, 1, 0, 393248, 1, 0, 393262, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 524329, 1, 0, 524330, 1, 0, 524331, 1, 0, 524332, 1, 0, 524333, 1, 0, 589858, 1, 0, 589859, 1, 0, 720890, 0, 0, 720891, 0, 0, 720892, 0, 0, 720893, 0, 0, 720894, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 720926, 1, 0, 720927, 1, 0, 720928, 1, 0, 983074, 1, 0, 983075, 1, 0, 983076, 1, 0, 1179678, 1, 0, 1179679, 1, 0, 1179680, 1, 0, 1310747, 1, 0, 1310748, 1, 0, 1507346, 1, 0, 1507347, 1, 0, 1507348, 1, 0, 1507349, 1, 0, 1507350, 1, 0, 1507351, 1, 0, 1507352, 1, 0, 1507353, 1, 0, 1507354, 1, 0, 1507355, 1, 0, 1507356, 1, 0 )
+
+[node name="background_cloudA" type="Sprite" parent="."]
+position = Vector2( -102.539, 344.602 )
+texture = ExtResource( 7 )
+
+[node name="background_cloudA3" type="Sprite" parent="."]
+position = Vector2( -102.539, 344.602 )
+texture = ExtResource( 7 )
+
+[node name="background_cloudB" type="Sprite" parent="."]
+position = Vector2( 936.908, 349.41 )
+texture = ExtResource( 5 )
+
+[node name="background_tree" type="Sprite" parent="."]
+position = Vector2( 282.127, 528.732 )
+texture = ExtResource( 8 )
+
+[node name="background_cloudA2" type="Sprite" parent="."]
+position = Vector2( 467.106, 217.323 )
+texture = ExtResource( 7 )
+
+[node name="tile_arrowRight" type="Sprite" parent="."]
+position = Vector2( 131.654, 562.391 )
+texture = ExtResource( 10 )
+
+[node name="tile_bush" type="Sprite" parent="."]
+position = Vector2( 991.496, 565.502 )
+texture = ExtResource( 9 )
+
+[node name="Heart" parent="." instance=ExtResource( 6 )]
+position = Vector2( 731.696, 531.59 )
+
+[node name="Heart2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2117.63, 837.06 )
+
+[node name="AnimationPlayer" parent="Heart2" index="2"]
+anims/bouncey = SubResource( 1 )
+anims/fade_out = SubResource( 2 )
+
+[node name="Heart3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1882.87, 596.644 )
+
+[node name="AnimationPlayer" parent="Heart3" index="2"]
+anims/bouncey = SubResource( 3 )
+anims/fade_out = SubResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 94, 481 )
+
+[node name="Pause" parent="Player/Control" index="2"]
+pause_mode = 2
+
+[node name="ColorRect" parent="Player" index="5"]
+margin_left = -660.0
+margin_top = -395.0
+margin_right = 685.0
+margin_bottom = 393.0
+
+[node name="Control2" type="Control" parent="Player"]
+margin_left = -94.0
+margin_top = -481.0
+margin_right = -54.0
+margin_bottom = -441.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins" type="Label" parent="Player/Control2"]
+margin_left = 520.0
+margin_top = 212.0
+margin_right = 560.0
+margin_bottom = 271.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -956.0
+margin_right = 1716.0
+margin_bottom = 973.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fade_in"
+anims/fade_in = SubResource( 6 )
+
+[editable path="Heart"]
+
+[editable path="Heart2"]
+
+[editable path="Heart3"]
+
+[editable path="Player"]
